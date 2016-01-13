@@ -23,3 +23,5 @@ fourseven:scss
 grokbot:bootstrap-flatly
 fortawesome:fontawesome
 smoral:sweetalert
+sanjo:jasmine
+velocity:html-reporter
