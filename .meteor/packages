@@ -21,3 +21,5 @@ react
 seba:minifiers-autoprefixer
 fourseven:scss
 grokbot:bootstrap-flatly
+fortawesome:fontawesome
+smoral:sweetalert
