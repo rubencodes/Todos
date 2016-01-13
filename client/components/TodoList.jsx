@@ -4,8 +4,8 @@ TodoList = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
     return {
-      incompleteTodos: Todos.find({ checked: false }, {sort: {createdAt: -1}}).fetch(),
-      completeTodos: Todos.find({ checked: true }, {sort: {updatedAt: -1}}).fetch()
+    incompleteTodos: Todos.find({ checked: false, deleted: undefined }, {sort: {createdAt: -1}}).fetch(),
+      completeTodos: Todos.find({ checked: true, deleted: undefined }, {sort: {updatedAt: -1}}).fetch()
     };
   },
   renderIncompleteTodos() {
