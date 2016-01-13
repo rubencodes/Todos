@@ -20,3 +20,4 @@ insecure                # Allow all DB writes from clients (for prototyping)
 react
 seba:minifiers-autoprefixer
 fourseven:scss
+grokbot:bootstrap-flatly

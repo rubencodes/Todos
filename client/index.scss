@@ -2,3 +2,31 @@
 body {
   background-color: #efefef;
 }
+
+.todoListContainer {
+  background-color: white;
+  width: 400px;
+  height: auto;
+  margin: 20px auto;
+  box-shadow: 0px 2px 2px 0px rgba(37, 37, 37, 0.3);
+  
+  header {
+    color: white;
+    background-color: #4B1;
+    padding: 20px;
+    box-shadow: 0px 1px 1px 0px rgba(37, 37, 37, 0.3);
+    h2 {
+      margin: 0;
+    }
+  }
+  ul.todoList {
+    list-style: none;
+    padding: 0;
+    
+    li.todo {
+      width: 100%;
+      padding: 10px 20px;
+      border-bottom: #eee solid 1px;
+    }
+  }
+}
