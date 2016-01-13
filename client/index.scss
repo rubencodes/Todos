@@ -31,12 +31,20 @@ html, body {
       width: 100%;
       padding: 10px 10px 10px 20px;
       border-bottom: #eee solid 1px;
-      &.checked {
+      span.checked {
         text-decoration: line-through;
         font-style: italic;
         color: #888;
       }
-      .fa {
+      small.timestamp {
+        color: $todo_green;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        font-style: normal;
+        display: block;
+      }
+      .options .fa {
         opacity: 0.1;
         border-radius: 50%;
         width: 25px;
@@ -49,22 +57,24 @@ html, body {
         cursor: pointer;
       }
       &:hover {
-        .fa {
-          opacity: 1;
-        }
-        .fa.fa-check {
-          color: $todo_green;
-        }
-        .fa.fa-check:hover {
-          background-color: $todo_green;
-          color: white;
-        }
-        .fa.fa-undo {
-          color: #f59432;
-        }
-        .fa.fa-undo:hover {
-          background-color: #f59432;
-          color: white;
+        .options {
+          .fa {
+            opacity: 1;
+          }
+          .fa.fa-check {
+            color: $todo_green;
+          }
+          .fa.fa-check:hover {
+            background-color: $todo_green;
+            color: white;
+          }
+          .fa.fa-undo {
+            color: #f59432;
+          }
+          .fa.fa-undo:hover {
+            background-color: #f59432;
+            color: white;
+          }
         }
       }
     }
