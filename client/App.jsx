@@ -2,6 +2,7 @@ App = React.createClass({
   addNewTodo(event) {
     event.preventDefault();
     
+    //show input dialogue
     swal({   
       title: "New Todo",   
       text: "Describe this todo item.",   
@@ -20,6 +21,7 @@ App = React.createClass({
       //success, add the todo to the list
       Meteor.call("addTodo", inputValue);
       
+      //exit input dialogue
       swal.close();
     });
   },

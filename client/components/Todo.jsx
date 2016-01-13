@@ -6,10 +6,11 @@ Todo = React.createClass({
     todo: React.PropTypes.object.isRequired
   },
   toggleCheck() {
-    //toggle the todo
+    //toggle the todo's checked status
     Meteor.call("toggleTodoChecked", this.props.todo._id);
   },
   deleteTodo() {
+    //delete todo from db
     Meteor.call("deleteTodo", this.props.todo._id);
   },
   render() {
