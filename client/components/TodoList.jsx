@@ -30,6 +30,18 @@ TodoList = React.createClass({
     $( "#sortable-complete,#sortable-incomplete" ).disableSelection();
   },
   renderIncompleteTodos() {
+    //display help text if we have no todos
+    if(this.data.incompleteTodos.length == 0) {
+      return (
+        <section className="inbox-zero">
+          <h4 className="text-center">
+            No Todo Items<br />
+            <small>Add a new one by clicking the button at the bottom right.</small>
+          </h4>
+        </section>
+      );
+    }
+    
     //render todo list items as Todo components
     return this.data.incompleteTodos.map((todo, i) => {
       return (<Todo key={i} todo={todo} onDelete={this.onTodoDelete} />);
@@ -65,14 +77,19 @@ TodoList = React.createClass({
       notification = (<Notification todoId={this.state.justDeleted} onUndo={this.onUndoDelete} />);
     }
     
+    let searchBar; //show searchBar if we have todos
+    if(this.data.completeTodos.length + this.data.incompleteTodos.length > 0) {
+      searchBar = (<section>
+        <input className="form-control" placeholder="Search..." ref="query" onChange={this.onSearch} />
+      </section>);
+    }
+    
     return (
       <div className="todoListContainer">
         <header>
           <h2>Todos</h2>
         </header>
-        <section>
-          <input className="form-control" placeholder="Search..." ref="query" onChange={this.onSearch} />
-        </section>
+        {searchBar}
         <ul id="sortable-incomplete" className="todoList list-group">
           {this.renderIncompleteTodos()}
         </ul>
