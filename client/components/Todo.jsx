@@ -1,8 +1,7 @@
 //class that represents a todo item
 Todo = React.createClass({
   propTypes: {
-    // This component gets the task to display through a React prop.
-    // We can use propTypes to indicate it is required
+    //todo to display
     todo: React.PropTypes.object.isRequired
   },
   toggleCheck() {
@@ -10,8 +9,8 @@ Todo = React.createClass({
     Meteor.call("toggleTodoChecked", this.props.todo._id);
   },
   deleteTodo() {
-    //delete todo from db
-    Meteor.call("deleteTodo", this.props.todo._id);
+    //delete todo
+    Meteor.call("deleteTodo", this.props.todo._id, this.props.onDelete.bind(null, this.props.todo._id));
   },
   render() {
     const todo = this.props.todo;

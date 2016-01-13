@@ -30,6 +30,14 @@ if (Meteor.isServer) {
           }
         });
       },
+      //undelete a Todo with id todoId
+      undeleteTodo: function(todoId) {
+        Todos.update(todoId, {
+          $set: {
+            deleted: undefined
+          }
+        });
+      },
     });
   });
 }

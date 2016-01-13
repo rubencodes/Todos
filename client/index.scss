@@ -69,6 +69,13 @@ html, body {
             background-color: $todo_green;
             color: white;
           }
+          .fa.fa-close {
+            color: #e74c3c;
+          }
+          .fa.fa-close:hover {
+            background-color: #e74c3c;
+            color: white;
+          }
           .fa.fa-undo {
             color: #f59432;
           }
@@ -81,7 +88,29 @@ html, body {
     }
   }
 }
-
+.notification {
+  position: absolute;
+  width: 50%;
+  left: 25%;
+  bottom: 0;
+  margin: 0;
+  line-height: 42px;
+  animation-name: popUp;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  
+  button.btn {
+    border-radius: 0;
+    border-left: 1px solid rgba(255,255,255, 0.2);
+    &:hover,&:focus {
+      background-color: initial;
+      border-color: transparent;
+      border-left: 1px solid rgba(255,255,255, 0.2);
+    }
+  }
+}
 button.btn.newTodo {
   position: absolute;
   right: 20px;
@@ -101,4 +130,13 @@ button.btn.newTodo:hover {
   background-color: darken($todo_green, 5%);
   box-shadow: 0 0 6px rgba(0,0,0,.16),0 0px 12px rgba(0,0,0,.32);
   transition: box-shadow 150ms cubic-bezier(0,0,.2,1), background-color 150ms;
+}
+
+@keyframes popUp {
+    0% {
+      transform: translateY(76px);
+    }
+    100% {
+      transform: translateY(0);
+    }
 }
