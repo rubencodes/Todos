@@ -17,7 +17,7 @@ App = React.createClass({
         return false   
       }      
       
-      //success, create the list
+      //success, add the todo to the list
       Meteor.call("addTodo", inputValue);
       
       swal.close();

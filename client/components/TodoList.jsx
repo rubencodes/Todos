@@ -19,7 +19,7 @@ TodoList = React.createClass({
         <header>
           <h2>Todos</h2>
         </header>
-        <ul className="todoList">
+        <ul className="todoList list-group">
           {this.renderTodos()}
         </ul>
       </div>
