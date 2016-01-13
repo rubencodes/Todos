@@ -27,8 +27,8 @@ Todo = React.createClass({
       <li className="todo list-group-item">
         <span className={todo.checked ? "checked" : ""}>{todo.text}</span>
         <section className="options pull-right">
-          <span className="fa fa-close" onClick={this.deleteTodo}></span>
           <span className={"fa "+(todo.checked ? "fa-undo" : "fa-check")} onClick={this.toggleCheck}></span>
+          <span className="fa fa-close" onClick={this.deleteTodo}></span>
         </section>
         {timestamp}
       </li>

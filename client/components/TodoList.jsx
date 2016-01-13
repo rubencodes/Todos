@@ -8,6 +8,10 @@ TodoList = React.createClass({
       completeTodos: Todos.find({ checked: true, deleted: undefined }, {sort: {updatedAt: -1}}).fetch()
     };
   },
+  componentDidMount() {
+    $( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
+  },
   renderIncompleteTodos() {
     //render todo list items as Todo components
     return this.data.incompleteTodos.map((todo, i) => {
@@ -26,7 +30,7 @@ TodoList = React.createClass({
         <header>
           <h2>Todos</h2>
         </header>
-        <ul className="todoList list-group">
+        <ul id="sortable" className="todoList list-group">
           {this.renderIncompleteTodos()}
           {this.renderCompleteTodos()}
         </ul>
