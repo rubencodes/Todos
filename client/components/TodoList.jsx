@@ -4,12 +4,19 @@ TodoList = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
     return {
-      todos: Todos.find({}, {sort: {createdAt: -1}}).fetch()
-    }
+      incompleteTodos: Todos.find({ checked: false }, {sort: {createdAt: -1}}).fetch(),
+      completeTodos: Todos.find({ checked: true }, {sort: {updatedAt: -1}}).fetch()
+    };
   },
-  renderTodos() {
+  renderIncompleteTodos() {
     //render todo list items as Todo components
-    return this.data.todos.map((todo, i) => {
+    return this.data.incompleteTodos.map((todo, i) => {
+      return (<Todo key={i} todo={todo} />);
+    });
+  },
+  renderCompleteTodos() {
+    //render todo list items as Todo components
+    return this.data.completeTodos.map((todo, i) => {
       return (<Todo key={i} todo={todo} />);
     });
   },
@@ -20,7 +27,8 @@ TodoList = React.createClass({
           <h2>Todos</h2>
         </header>
         <ul className="todoList list-group">
-          {this.renderTodos()}
+          {this.renderIncompleteTodos()}
+          {this.renderCompleteTodos()}
         </ul>
       </div>
     );

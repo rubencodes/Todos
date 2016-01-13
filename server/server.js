@@ -5,6 +5,7 @@ if (Meteor.isServer) {
       addTodo: function(text) {
         Todos.insert({
           text: text,
+          checked: false,
           createdAt: Date.now()
         });
       },
@@ -15,6 +16,7 @@ if (Meteor.isServer) {
         Todos.update(todoId, {
           $set: {
             checked: !todo.checked,
+            updatedAt: Date.now(),
           }
         });
       }
