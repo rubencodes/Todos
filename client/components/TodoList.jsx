@@ -36,7 +36,7 @@ TodoList = React.createClass({
         <section className="inbox-zero">
           <h4 className="text-center">
             No Todo Items<br />
-            <small>Add a new one by clicking the button at the bottom right.</small>
+            <small>{this.state.query ? "No items match this query :(" : "Add a new one by clicking the button at the bottom right."}</small>
           </h4>
         </section>
       );
@@ -78,7 +78,7 @@ TodoList = React.createClass({
     }
     
     let searchBar; //show searchBar if we have todos
-    if(this.data.completeTodos.length + this.data.incompleteTodos.length > 0) {
+    if(this.data.completeTodos.length + this.data.incompleteTodos.length > 0 || this.state.query) {
       searchBar = (<section>
         <input className="form-control" placeholder="Search..." ref="query" onChange={this.onSearch} />
       </section>);
