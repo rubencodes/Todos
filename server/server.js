@@ -1,4 +1,9 @@
 if (Meteor.isServer) {
+  //publish todos to frontend
+  Meteor.publish("todos", function () {
+    return Todos.find();
+  });
+  
   Meteor.startup(function () {
     // code to run on server at startup
     Meteor.methods({

@@ -6,6 +6,9 @@ TodoList = React.createClass({
     return {};
   },
   getMeteorData() {
+    //subscribed to todos data
+    var todos = Meteor.subscribe("todos");
+    
     //default params for retriving list of todos
     const incompleteTodosParams = { checked: false, deleted: undefined };
     const completeTodosParams   = { checked: true, deleted: undefined };
@@ -16,6 +19,7 @@ TodoList = React.createClass({
     }
     
     return {
+      todosLoading:    !todos.ready(),
       incompleteTodos: Todos.find(incompleteTodosParams, {sort: {createdAt: -1}}).fetch(),
       completeTodos:   Todos.find(completeTodosParams,   {sort: {updatedAt: -1}}).fetch()
     };
@@ -52,6 +56,22 @@ TodoList = React.createClass({
     return this.data.completeTodos.map((todo, i) => {
       return (<Todo key={i} todo={todo} onDelete={this.onTodoDelete} />);
     });
+  },
+  renderTodos() {
+    //render both sub-todo lists
+    return (<section>
+      <ul id="sortable-incomplete" className="todoList list-group">
+        {this.renderIncompleteTodos()}
+      </ul>
+      <ul id="sortable-complete" className="todoList list-group">
+        {this.renderCompleteTodos()}
+      </ul>
+    </section>);
+  },
+  renderLoadingIndicator() {
+    return (<ul className="todoList list-group">
+      <li className="list-group-item text-center"><h4>Loading...</h4></li>
+    </ul>);
   },
   onTodoDelete(todoId) {
     //set this item as just deleted
@@ -90,12 +110,7 @@ TodoList = React.createClass({
           <h2>Todos</h2>
         </header>
         {searchBar}
-        <ul id="sortable-incomplete" className="todoList list-group">
-          {this.renderIncompleteTodos()}
-        </ul>
-        <ul id="sortable-complete" className="todoList list-group">
-          {this.renderCompleteTodos()}
-        </ul>
+        {!this.data.todosLoading ? this.renderTodos() : this.renderLoadingIndicator()}
         {notification}
       </div>
     );
