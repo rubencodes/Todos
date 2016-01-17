@@ -24,14 +24,16 @@ TodoList = React.createClass({
       completeTodos:   Todos.find(completeTodosParams,   {sort: {updatedAt: -1}}).fetch()
     };
   },
-  componentDidMount() {
+  componentDidUpdate() {
     //sets up manually sortability
-    $( "#sortable-complete,#sortable-incomplete" ).sortable({ 
-      axis: "y", 
-      containment: "parent", 
-      cursor: "move" 
-    });
-    $( "#sortable-complete,#sortable-incomplete" ).disableSelection();
+    if(!this.data.todosLoading) {
+      $( "#sortable-complete,#sortable-incomplete" ).sortable({ 
+        axis: "y", 
+        containment: "parent", 
+        cursor: "move" 
+      });
+      $( "#sortable-complete,#sortable-incomplete" ).disableSelection();
+    }
   },
   renderIncompleteTodos() {
     //display help text if we have no todos
